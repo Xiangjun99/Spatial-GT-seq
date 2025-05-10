@@ -1,128 +1,161 @@
 # CoprofillingPipeline
 # Spatial and Single-Cell DNA Sequencing Data Processing Workflow
 
-This repository provides comprehensive and automated pipelines for processing spatial and single-cell DNA sequencing data. The workflows are optimized for performance and ease of use, ensuring accurate alignment, deduplication, and quantification of genomic fragments.
+This repository provides comprehensive and automated pipelines for processing both spatial and single-cell DNA sequencing data. These workflows include alignment, deduplication, barcode parsing, and fragment quantification, and are optimized for performance, scalability, and reproducibility in a high-throughput setting.
 
 ---
 
 ## Requirements
 
-### Programming Languages
+### Programming Language
 
-* **Python 3.11**
+* **Python 3.11** is required for compatibility with all included scripts.
 
-### Python Dependencies
+### Python Packages
 
-The following Python libraries are required:
+Install the required Python dependencies using `pip`:
 
 ```bash
-pip install pysam natsort
+pip install pysam natsort numpy
 ```
 
-### External Software Dependencies
+### External Software Tools
 
-You must install and configure the following external bioinformatics tools:
+The following tools are required and should be installed separately. These tools are used via absolute paths defined in the scripts.
 
 ```bash
 conda install -c bioconda bwa samtools sambamba
 ```
 
----
-
-## Setting Up the Environment
-
-Modify the paths to external software clearly in each script (`preprocess.py` and `preprocess1.py`):
+You must modify the absolute paths in the scripts (`preprocess.py`, `preprocess1.py`) to reflect the location of these tools on your system:
 
 ```python
-# Modify these paths to match your environment
-BWA_PATH = "/path/to/your/bwa"
-SAMTOOLS_PATH = "/path/to/your/samtools"
-SAMBAMBA_PATH = "/path/to/your/sambamba"
+BWA_PATH = "/path/to/bwa"
+SAMTOOLS_PATH = "/path/to/samtools"
+SAMBAMBA_PATH = "/path/to/sambamba"
 ```
 
 ---
 
-## Spatial DNA Data Processing
+## Spatial DNA Sequencing Data Processing
+
+This part of the pipeline processes spatially barcoded bulk DNA sequencing data and outputs barcode-specific BAM files and fragment count matrices.
 
 ### Step 1: Preprocessing (`preprocess.py`)
 
-Performs alignment, deduplication, and BAM file generation.
+This script performs:
+
+* Read alignment using BWA MEM
+* SAM to BAM conversion, sorting, and indexing using Samtools
+* Duplicate marking and removal using Sambamba
+* Splitting deduplicated SAM files by barcode (extracted from FASTQ read 2)
+* Per-barcode SAM to BAM conversion and autosomal read count filtering
 
 #### Usage
 
 ```bash
-python preprocess.py --fq1 <path_to_fastq1> --fq2 <path_to_fastq2> --ref <path_to_reference_genome> --output <output_directory> --threshold 5
+python preprocess.py \
+  --fq1 path/to/sample_R1.fq.gz \
+  --fq2 path/to/sample_R2.fq.gz \
+  --ref path/to/reference.fa \
+  --output path/to/output_directory \
+  --threshold 5
+```
+
+The final filtered BAM files will be located in:
+
+```
+<output_directory>/bamFile/
 ```
 
 ### Step 2: Fragment Counting (`getFragmentsInfo.py`)
 
-Counts unique UMI-tagged DNA fragments within 5M base genomic windows.
+This script counts unique UMI-tagged fragments for each BAM file in 5 million base pair bins across all chromosomes.
 
 #### Usage
 
 ```bash
-python getFragmentsInfo.py --directory <bam_files_directory> --fq2path <path_to_fastq2> --output_tsv <output_tsv_path> --output_sum_csv <output_summary_csv_path> --genome human
+python getFragmentsInfo.py \
+  --directory path/to/bamFile \
+  --fq2path path/to/sample_R2.fq.gz \
+  --output_tsv fragments_matrix.tsv \
+  --output_sum_csv genome_bin_summary.csv \
+  --genome mouse
 ```
+
+Output:
+
+* `fragments_matrix.tsv`: Each row represents a barcode spot; each column is a genomic bin.
+* `genome_bin_summary.csv`: Total fragment count per genomic bin.
 
 ---
 
-## Single-Cell DNA Data Processing
+## Single-Cell DNA Sequencing Data Processing
 
-The single-cell DNA data processing pipeline consists of two main preprocessing steps:
+This section handles high-resolution DNA sequencing data from individual cells. The barcode-aware preprocessing allows reconstruction of single-cell data from pooled reads.
 
-### Step 1: Alignment and Initial Preprocessing (`preprocess1.py`)
+### Step 1: Alignment and Preprocessing (`preprocess1.py`)
 
-Align reads using BWA MEM, convert SAM to sorted, deduplicated BAM, and back to SAM format.
+Aligns single-end reads, performs BAM conversion and deduplication, and outputs a cleaned SAM file.
 
 #### Usage
 
 ```bash
-python preprocess1.py --fq1 <path_to_fastq1> --ref <path_to_reference_genome> --output <output_directory>
+python preprocess1.py \
+  --fq1 path/to/sample.fq.gz \
+  --ref path/to/reference.fa \
+  --output path/to/output_directory
+```
+
+Output:
+
+```
+<output_directory>/preProcess/sort_<sample>_clean.sam
 ```
 
 ### Step 2: Barcode Extraction and SAM Splitting (`preprocess2.py`)
 
-Extracts barcodes from FASTQ files, filters barcodes based on read count, and splits SAM files according to barcodes.
+Extracts three barcodes per read, performs error correction (1 mismatch tolerated), filters by read count, and splits SAM file into per-cell files.
 
-#### Required Barcode File
+#### Required Input
 
-Barcode file can be found in the repository at:
+* **Barcode whitelist file**: Found in this repository under:
 
 ```
 testData/barcode/barcode_list.txt
 ```
 
+* **FASTQ file**: R2 read in `.fq.gz` format with barcodes encoded at positions 0–8, 38–46, and 76–84
+
 #### Usage
 
 ```bash
-python preprocess2.py <path_to_fastq2.gz> <path_to_cleaned_sam_file> <path_to_barcode_file> <output_directory>
+python preprocess2.py \
+  path/to/sample_R2.fq.gz \
+  path/to/sort_<sample>_clean.sam \
+  testData/barcode/barcode_list.txt \
+  path/to/output_split_sam
 ```
 
-* `<path_to_fastq2.gz>`: Path to FASTQ file containing barcode information.
-* `<path_to_cleaned_sam_file>`: Path to the cleaned SAM file from step 1.
-* `<path_to_barcode_file>`: Path to the candidate barcode file.
-* `<output_directory>`: Directory to store split SAM files.
+Each resulting SAM file corresponds to one cell barcode and is named `<barcode>.sam` in the output directory.
 
 ---
 
 ## Output Explanation
 
-* **Detailed TSV/CSV files**:
-
-  * Provides comprehensive counts and metrics suitable for downstream analyses.
-* **Split SAM files**:
-
-  * Individual SAM files per barcode, facilitating single-cell resolution analysis.
+* **BAM files (spatial)**: Ready for downstream CNV calling or genome-wide coverage analysis.
+* **Per-cell SAM files (single-cell)**: Enable independent cell-level variant calling or fragment reconstruction.
+* **Fragment matrix**: Useful for clustering, dimensionality reduction, and signal heatmaps.
 
 ---
 
 ## Performance Optimization
 
-* All workflows utilize parallelization via Python's `multiprocessing` module.
-* Ensure your computational environment effectively utilizes available CPU cores.
+* Scripts utilize Python's `multiprocessing.Pool` to maximize CPU utilization.
+* Ensure adequate system memory and thread capacity when processing large datasets.
 
 ---
 
 ## Contact
 
-For issues or contributions, please create an issue or pull request on GitHub. We welcome community engagement and feedback to improve these pipelines.
+For questions or contributions, please file an issue or submit a pull request. We encourage collaborative development and constructive feedback to further improve this project.
