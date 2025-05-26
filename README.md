@@ -13,10 +13,10 @@ It includes: 1) codes for processing and analyzing spatial-DNA-seq data, 2) code
 | Folder                | Purpose                                                                                                                                             | Visibility |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|------------|
 | `install`             | Installing the required command line tools and packages of R and Python languages.                                                          | public     |
-| `Spatial-DNA-seq`     | Scripts of alighment, deduplication, barcode parsing, and fragment quantification to generate bamFiles for copykit. Besides, codes for downstream analysis used in spatial-DNA-seq.        | public     |
-| `Spatial-RNA-seq`     | Scripts to take the BCL files of wellDA-seq to create the single-cell CNA and ATAC matrices files.                                          | public     |
-| `Single-cell DNA-seq` | Codes of computational analysis used in the manuscript. This folder is organized in the order of applications.                              | public   |
-| `testData`            | Codes of data visualization shown in the manuscript. This folder is organized in the order of figures.                                      | public    |
+| `Spatial-DNA-seq`     | Scripts for alignment, deduplication, barcode parsing, and fragment quantification to generate BAM files compatible with CopyKit. Additionally, this folder contains code for downstream analyses used in spatial-DNA-seq.        | public     |
+| `Spatial-RNA-seq`     | Scripts to preprocess single-cell RNA-seq data, as well as code for downstream analysis and visualization.                                  | public     |
+| `Single-cell DNA-seq` | Scripts to preprocess single-cell DNA-seq data, as well as code for downstream analysis and visualization.                                  | public   |
+| `testData`            | A sample dataset for testing the spatial-DNA-seq pipeline.                                                                                  | public    |
 
 
 ---
