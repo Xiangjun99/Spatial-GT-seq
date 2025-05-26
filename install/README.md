@@ -1,26 +1,11 @@
 # Installation
 
-## R and some key R Packages
-
-| Item               | Purpose       | Link                                                                     |
-|--------------------|---------------|--------------------------------------------------------------------------|
-| R language (4.3.2) | programming   | https://www.r-project.org/                                               |
-| Seurat             | RNA           | https://satijalab.org/seurat/articles/install                            |
-| Monocle3           | RNA           | https://cole-trapnell-lab.github.io/monocle3/                            |
-| CellChat           | RNA           | https://github.com/sqjin/CellChat                                        |
-| Copykit            | CNV           | https://github.com/navinlabcode/copykit                                  |
-| ComplexHeatmap     | visualization | https://bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html  |
-| ggplot2            | visualization | https://ggplot2.tidyverse.org/                                           |
-
-
-
 
 ## Spatial-GT-seq RNA data pipeline
 
 | Item         | Link                                                |
 |--------------|-----------------------------------------------------|
 | RNA_pipeline | https://github.com/MingyuYang-Yale/DBiT-seq         |
-
 
 
 
@@ -56,5 +41,18 @@ BWA_PATH = "/path/to/bwa"
 SAMTOOLS_PATH = "/path/to/samtools"
 SAMBAMBA_PATH = "/path/to/sambamba"
 ```
+
+
+## R and some key R Packages
+
+| Item               | Purpose       | Link                                                                     |
+|--------------------|---------------|--------------------------------------------------------------------------|
+| R language (4.3.2) | programming   | https://www.r-project.org/                                               |
+| Seurat             | RNA           | https://satijalab.org/seurat/articles/install                            |
+| Monocle3           | RNA           | https://cole-trapnell-lab.github.io/monocle3/                            |
+| CellChat           | RNA           | https://github.com/sqjin/CellChat                                        |
+| Copykit            | CNV           | https://github.com/navinlabcode/copykit                                  |
+| ComplexHeatmap     | visualization | https://bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html  |
+| ggplot2            | visualization | https://ggplot2.tidyverse.org/                                           |
 
 ---
