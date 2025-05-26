@@ -1,0 +1,33 @@
+###Installation
+
+## Requirements
+
+### Programming Language
+
+* **Python 3.11** is required for compatibility with all included scripts.
+
+### Python Packages
+
+Install the required Python dependencies using `pip`:
+
+```bash
+pip install pysam natsort numpy
+```
+
+### External Software Tools
+
+The following tools are required and should be installed separately. These tools are used via absolute paths defined in the scripts.
+
+```bash
+conda install -c bioconda bwa samtools sambamba
+```
+
+You must modify the absolute paths in the scripts (`preprocess.py`, `preprocess1.py`) to reflect the location of these tools on your system:
+
+```python
+BWA_PATH = "/path/to/bwa"
+SAMTOOLS_PATH = "/path/to/samtools"
+SAMBAMBA_PATH = "/path/to/sambamba"
+```
+
+---
