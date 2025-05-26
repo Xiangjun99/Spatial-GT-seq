@@ -5,7 +5,7 @@
 
 | Item         | Link                                                |
 |--------------|-----------------------------------------------------|
-| RNA_pipeline | [RNA_pipeline](https://github.com/MingyuYang-Yale/DBiT-seq) |
+| RNA_pipeline | https://github.com/MingyuYang-Yale/DBiT-seq         |
 
 
 
