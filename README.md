@@ -4,9 +4,15 @@ This repository includes the codes for the manuscript:'Spatial genome and transc
 
 It includes: 1) codes for processing and analyzing spatial-DNA-seq and single-cell DNA-seq data, and 2) codes for processing and analyzing spatial-RNA-seq data. Specifically, this repository is organized as following folders:
 
+| Folder        | Purpose                                                                                                                                     | Visibility |
+|---------------|---------------------------------------------------------------------------------------------------------------------------------------------|------------|
+| `install`     | Installing the required command line tools and packages of R and Python languages.                                                          | public     |
+| `tutorial`    | This tutorial uses a real sample in the manuscript to demonstrate how to preprocess and analyze wellDA-seq data.                            | public     |
+| `preprocessing` | Scripts to take the BCL files of wellDA-seq to create the single-cell CNA and ATAC matrices files.                                        | public     |
+| `analysis`    | Codes of computational analysis used in the manuscript. This folder is organized in the order of applications.                             | private    |
+| `figure`      | Codes of data visualization shown in the manuscript. This folder is organized in the order of figures.                                     | private    |
+| `data_portal` | Data objects of input and output.                                                                                                           | private    |
 
-
-This repository provides comprehensive and automated pipelines for processing both spatial and single-cell DNA sequencing data. These workflows include alignment, deduplication, barcode parsing, and fragment quantification, and are optimized for performance, scalability, and reproducibility in a high-throughput setting.
 
 ---
 # Spatial and Single-Cell DNA Sequencing Data Processing Workflow
