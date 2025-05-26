@@ -1,9 +1,11 @@
-# CoprofillingPipeline
-# Spatial and Single-Cell DNA Sequencing Data Processing Workflow
+# Spatial-GT-seq
+
+This repository includes the codes for the manuscript:'Spatial genome and transcriptome co-mapping reveals clonal heterogeneity in tumor tissue'.
 
 This repository provides comprehensive and automated pipelines for processing both spatial and single-cell DNA sequencing data. These workflows include alignment, deduplication, barcode parsing, and fragment quantification, and are optimized for performance, scalability, and reproducibility in a high-throughput setting.
 
 ---
+# Spatial and Single-Cell DNA Sequencing Data Processing Workflow
 
 ## Requirements
 
