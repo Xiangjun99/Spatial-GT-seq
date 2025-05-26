@@ -13,8 +13,8 @@ It includes: 1) codes for processing and analyzing spatial-DNA-seq data, 2) code
 | Folder                | Purpose                                                                                                                                             | Visibility |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|------------|
 | `install`             | Installing the required command line tools and packages of R and Python languages.                                                          | public     |
-| `Spatial-DNA-seq`     | Scripts for alignment, deduplication, barcode parsing, and fragment quantification to generate BAM files compatible with CopyKit. Additionally, this folder contains code for downstream analyses used in spatial-DNA-seq.        | public     |
-| `Spatial-RNA-seq`     | Scripts to preprocess single-cell RNA-seq data, as well as code for downstream analysis and visualization.                                  | public     |
+| `Spatial-GT-seq DNA`     | Scripts for alignment, deduplication, barcode parsing, and fragment quantification to generate BAM files compatible with CopyKit. Additionally, this folder contains code for downstream analyses used in Spatial-GT-seq DNA.        | public     |
+| `Spatial-GT-seq RNA`     | Scripts to preprocess Spatial-GT-seq RNA data, as well as code for downstream analysis and visualization.                                  | public     |
 | `Single-cell DNA-seq` | Scripts to preprocess single-cell DNA-seq data, as well as code for downstream analysis and visualization.                                  | public   |
 | `testData`            | A sample dataset for testing the spatial-DNA-seq pipeline.                                                                                  | public    |
 
