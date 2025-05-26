@@ -2,6 +2,10 @@
 
 This repository includes the codes for the manuscript:'Spatial genome and transcriptome co-mapping reveals clonal heterogeneity in tumor tissue'.
 
+It includes: 1) codes for processing and analyzing spatial-DNA-seq and single-cell DNA-seq data, and 2) codes for processing and analyzing spatial-RNA-seq data. Specifically, this repository is organized as following folders:
+
+
+
 This repository provides comprehensive and automated pipelines for processing both spatial and single-cell DNA sequencing data. These workflows include alignment, deduplication, barcode parsing, and fragment quantification, and are optimized for performance, scalability, and reproducibility in a high-throughput setting.
 
 ---
