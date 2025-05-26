@@ -1,12 +1,17 @@
-# CoprofillingPipeline
-# Spatial and Single-Cell DNA Sequencing Data Processing Workflow
+# Installation
 
-This repository provides comprehensive and automated pipelines for processing both spatial and single-cell DNA sequencing data. These workflows include alignment, deduplication, barcode parsing, and fragment quantification, and are optimized for performance, scalability, and reproducibility in a high-throughput setting.
+## Spatial-GT-seq RNA data preprocess pipeline
 
----
+
+| Item         | Link                                                |
+|--------------|-----------------------------------------------------|
+| RNA_pipeline | [RNA_pipeline](https://github.com/MingyuYang-Yale/DBiT-seq) |
+
+
+
+
 
 ## Requirements
-
 ### Programming Language
 
 * **Python 3.11** is required for compatibility with all included scripts.
