@@ -41,7 +41,7 @@ python getFragmentsInfo.py \
   --fq2path path/to/sample_R2.fq.gz \
   --output_tsv fragments_matrix.tsv \
   --output_sum_csv genome_bin_summary.csv \
-  --genome mouse
+  --genome mouse (or human)
 ```
 
 Output:
