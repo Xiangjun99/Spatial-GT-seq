@@ -1,7 +1,6 @@
 # Spatial-GT-seq
 
-This repository contains the code for the manuscript "Spatial genome and transcriptome co-mapping reveals clonal heterogeneity in tumor tissue." In this work, we introduce Spatial-GT-seq, a spatial multi-omic technology that enables genome-wide co-profiling of the genome and transcriptome at near single-cell resolution. Simultaneous mapping of the genome and transcriptome within the same tumor tissue allows for direct linkage of clonal architecture to transcriptional states, offering deeper insights into both intrinsic and extrinsic sources of tumor heterogeneity within the spatial context of the tissue. ![image](https://github.com/user-attachments/assets/051824b9-e72b-4eeb-9f3c-4a068f8666da)
- ![image](https://github.com/user-attachments/assets/7326ad44-2e74-4fc8-828e-32e220087844)
+This repository contains the code for the manuscript "Spatial genome and transcriptome co-mapping reveals clonal heterogeneity in tumor tissue." In this work, we introduce Spatial-GT-seq, a spatial multi-omic technology that enables genome-wide co-profiling of the genome and transcriptome at near single-cell resolution. Simultaneous mapping of the genome and transcriptome within the same tumor tissue allows for direct linkage of clonal architecture to transcriptional states, offering deeper insights into both intrinsic and extrinsic sources of tumor heterogeneity within the spatial context of the tissue.
 
 
 
