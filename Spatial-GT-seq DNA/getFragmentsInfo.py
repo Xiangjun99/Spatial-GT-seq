@@ -179,7 +179,7 @@ def process_file(args_tuple):
 # Fixed mapping from barcode to cell index
 cell_name_dic = {
     'AACGTGAT': '1',  'AAACATCG': '2',  'ATGCCTAA': '3',  'AGTGGTCA': '4',  'ACCACTGT': '5',
-    'ACATTWGC': '6',  'CAGATCTG': '7',  'CATCAAGT': '8',  'CGCTGATC': '9',  'ACAAGCTA': '10',
+    'ACATTGGC': '6',  'CAGATCTG': '7',  'CATCAAGT': '8',  'CGCTGATC': '9',  'ACAAGCTA': '10',
     'CTGTAGCC': '11', 'AGTACAAG': '12', 'AACAACCA': '13', 'AACCGAGA': '14', 'AACGCTTA': '15',
     'AAGACGGA': '16', 'AAGGTACA': '17', 'ACACAGAA': '18', 'ACAGCAGA': '19', 'ACCTCCAA': '20',
     'ACGCTCGA': '21', 'ACGTATCA': '22', 'ACTATGCA': '23', 'AGAGTCAA': '24', 'AGATCGCA': '25',
