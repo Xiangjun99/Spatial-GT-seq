@@ -222,21 +222,19 @@ library(cowplot)
 colnames(chr_sizes) <- c("chr", "chr_end")
 chr_labels <- chr_sizes$chr
 chr_breaks <- chr_sizes$chr_end
-chr_mid <- c(0, chr_breaks[-length(chr_breaks)]) + diff(c(0, chr_breaks))/2  # 用于在图上标 chr 名
+chr_mid <- c(0, chr_breaks[-length(chr_breaks)]) + diff(c(0, chr_breaks))/2 
 names(chr_mid) <- chr_labels
 
 p_cnv <- ggplot(cnv_changes_diploid, aes(x = bins, y = cnv_c1_vsDiploid)) +
   geom_line(color = "steelblue", size = 0.7, na.rm = TRUE) +
   #geom_smooth(aes(y = cnv_C4_vsDiploid), method = "loess", se = FALSE, color = "darkblue") +
   theme_cowplot() +
-  labs(y = "CNV (C4 vs Diploid)", x = NULL) +
-  # 染色体分界线
+  labs(y = "CNV diff", x = NULL) +
   geom_vline(xintercept = chr_breaks, linetype = "dashed", color = "grey70") +
-  # 染色体标签
   scale_x_continuous(breaks = chr_mid, labels = chr_labels,limits = c(1, 2210),
                      expand = c(0, 0)) +
   scale_y_continuous(limits = c(-0.2, 0.2)) +
-  theme(axis.text.x = element_blank(),  # 上 panel 不显示 x
+  theme(axis.text.x = element_blank(), 
         axis.ticks.x = element_blank(),
         plot.title = element_text(size=12)) +
   ggtitle("CNV differences")
