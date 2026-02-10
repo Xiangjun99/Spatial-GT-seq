@@ -111,7 +111,7 @@ me_tree_nodipoid$tip.label
 
 ggtree_misc_meta <- data.frame(
   Newick_label = me_tree_nodipoid$tip.label,
-  group = me_tree_nodipoid$tip.label  # 每个tip自己就是组
+  group = me_tree_nodipoid$tip.label 
 )
 
 list_samples <- as.list(me_tree_nodipoid$tip.label)
@@ -208,7 +208,6 @@ write_lines(score_GP_concordance,
             file = 'pearsonscore_GP_concordance.txt')
 
 
-#Method2: Mantel test（距离矩阵的置换检验）,计算p_value,统计显著性
 library(ade4)
 run_mantel_rtest <- function(m1, m2){
   lbs <- rownames(m1)
@@ -235,7 +234,7 @@ stopifnot(all(genotree_tip_orders %in% rownames(cna_dist_mat)))
 stopifnot(all(genotree_tip_orders %in% rownames(rna_dist)))
 
 #Step 1
-clone_order <- rev(genotree_tip_orders)  # 反转只是为了视觉上更像树
+clone_order <- rev(genotree_tip_orders)  
 clone_order
 
 tmp_cna  <- cna_dist_mat[clone_order, clone_order]
