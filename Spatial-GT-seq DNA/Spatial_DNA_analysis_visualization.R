@@ -26,7 +26,7 @@ library(BiocParallel)
 register(MulticoreParam(workers = 32, progressbar = T),default = T)
 
 copykit <-runVarbin('bamFile',
-                    genome='hg38', # for mouse, it is 'mm10'
+                    genome='hg38', 
                     resolution = "1Mb",
                     remove_Y=T,
                     remove_X = TRUE,
@@ -69,7 +69,7 @@ pdf("CNV_heatmap.pdf", width = 16, height = 8)
 plotHeatmap(
   copykit,
   genome = "hg38",
-  #consensus = TRUE,
+  consensus = TRUE,
   label = c('subclones'),
   order_cells = 'consensus_tree',
   col = col_fun,
