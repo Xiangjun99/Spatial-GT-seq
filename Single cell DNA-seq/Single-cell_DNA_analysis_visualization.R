@@ -65,7 +65,6 @@ plotHeatmap(
   genome = "mm10",
   #consensus = TRUE,
   label = c('subclones'),
-  #genes = c("TP53", "BRAF", "MYC"),
   order_cells = 'consensus_tree',
   col = col_fun,
   label_colors = list(subclones = subclone_pal),
