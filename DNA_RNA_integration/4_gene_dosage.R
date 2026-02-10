@@ -29,7 +29,7 @@ pbmc
 load("copykit.rdata")
 copykit
 
-#----combine with DNA meta data 
+#combine with DNA meta data 
 dna_meta_temp <- copykit@colData %>% as.data.frame() %>% dplyr::select("subclones","sample")
 library(tibble)
 rna_meta_temp <- pbmc@meta.data %>% as.data.frame() %>% rownames_to_column() %>% 
