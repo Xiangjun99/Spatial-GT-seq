@@ -36,7 +36,7 @@ df_all <- rbind(df1, df2)
 
 x_max <- 20000  
 
-# 绘图
+
 pdf(file = "UMI_Gene_distribution.pdf", width=8.6, height=8.6)
 ggplot(df_all, aes(x = count, fill = type, color = type)) + 
   geom_histogram(aes(y = ..density..), binwidth = x_max / 20, alpha = 0.3, position = "identity") +
